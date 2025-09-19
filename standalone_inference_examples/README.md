@@ -20,8 +20,8 @@ In general, the following files are required to run inference in standalone mode
 2. **Boot image file** for BS402
 3. **FPGA bit files** for sensors and communications
 4. **Driver files**
-   - [Host interface driver](https://github.com/Deeper-I/tachy_bs_host_driver) (for communication with Tachy-Shield)
-   - [Dummy V4L2 driver](https://github.com/Deeper-I/i2c_dummy_sensor) (V4L2 interface for receiving video from FPGA)
+   - [tachy-rpi-drivers](https://github.com/Deeper-I/tachy-rpi-drivers)
+   Drivers required to use the Tachy-Shield device on Raspberry Pi, including the host interface driver and the dummy V4L2 sensor driver.
 5. **Main executable** for running on the host
 
 ---
