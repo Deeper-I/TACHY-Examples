@@ -37,6 +37,47 @@ The following files are required to run inference in host-driven mode:
 ## Example
 | Example | Description | Notes |
 |---------|-------------|-------|
-| **Object Detection** | Detects person | -|
-> ### Object Detection (Yolov9 Person)
+| **Object Detection** | in Street view | - |
 
+> ### Example 1: Object Detection - Street view (YOLOv4 Person/Car/NumberPlate)
+This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
+
+#### Example1 - requirements
+1. **Bootloader file** for BS402 booting
+   - [spl](https://gofile.me/5NFjK/MPDyBUKCk)
+   - [u-boot](https://gofile.me/5NFjK/HrNppqcEw)
+2. **Boot image file** for BS402
+   - [image](https://gofile.me/5NFjK/NhuNuKcFe)
+3. **FPGA bit files** for sensors and communications
+   - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
+4. **Driver files**  see [Required Files](#required-files)
+5. **Main executable**
+   - Run the example application with:
+   ```bash
+   python3 main.py \
+      --model_path "./model_160x288x3_inv-f.tachyrt" \
+      --path_firmware "./tachy-shield" \
+      --post_config_path "./post_configs.json"
+   ```
+   - `--model_path` : path to the YOLOv4 compiled model (.tachyrt)
+   - `--path_firmware` : directory containing the TACHY-BS Shield firmware binaries
+   - `--post_config_path` : path to the post-processing configuration JSON file
+
+#### Quick start
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/Deeper-I/TACHY-Examples
+   cd /media/hdd1/sandbox/git/deeper-i/TACHY-Examples/host_inference_examples/examples/example1
+   ```
+   
+2. **Prepare required files**  
+   - Download bootloader, boot image, FPGA bit in [here](#example1---requirements)
+   - Place **all required files in a single directory (e.g., `./tachy-shield/`)** 
+   - This directory will later be passed to `--path_firmware` when running the application  
+
+3. **Build / install drivers**  
+   see tachy-rpi-drivers [README.md](https://github.com/Deeper-I/tachy-rpi-drivers/blob/main/README.md)
+
+4. **Run the example application**  
+   `python3 main.py --model_path "./model_160x288x3_inv-f.tachyrt" --path_firmware "./tachy-shield" --post_config_path "./post_configs.json"`

@@ -30,8 +30,8 @@ In general, the following files are required to run inference in standalone mode
 
 | Example | Description | Notes |
 |---------|-------------|-------|
-| **ANPR** | Automatic Number Plate Recognition | - |
-| **Object Detection** | Detects person | -|
+| **ANPR** | Automatic Number Plate Recognition | TODO |
+| **Object Detection** | Detects person | TODO |
 
 
 > ### Example 1: ANPR (Automatic Number Plate Recogition)
@@ -47,17 +47,4 @@ Use this example if you want to test end-to-end inference including detection an
 3. **FPGA bit files** for sensors and communications
    - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
 4. **Driver files**  see [Required Files](#required-files)
-5. **Main executable**  
-
-
-> ### Example 2: Object Detection (Yolov9 Person)
-
-#### requirements
-1. **Bootloader file** for BS402 booting
-   - [spl](https://gofile.me/5NFjK/MPDyBUKCk)
-   - [u-boot](https://gofile.me/5NFjK/HrNppqcEw)
-2. **Boot image file** for BS402
-3. **FPGA bit files** for sensors and communications
-   - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
-4. **Driver files**  see [Required Files](#required-files)
-5. **Main executable**  
+5. **Main executable** 
