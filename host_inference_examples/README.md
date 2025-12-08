@@ -51,7 +51,9 @@ This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
 3. **FPGA bit files** for sensors and communications
    - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
 4. **Driver files**  see [Required Files](#required-files)
-5. **Main executable**
+5. **tachyrt file** Required TachyRT model for running the inference example
+   - [tachyrt](https://gofile.me/5NFjK/8pjoLs9Ss)
+6. **Main executable**
    - Run the example application with:
    ```bash
    python3 main.py \
