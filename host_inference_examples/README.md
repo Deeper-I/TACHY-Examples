@@ -18,7 +18,7 @@ The following files are required to run inference in host-driven mode:
    - [spl](https://gofile.me/5NFjK/MPDyBUKCk)
    - [u-boot](https://gofile.me/5NFjK/HrNppqcEw)
 2. **Boot image file** for BS402
-   - [image.ub](https://gofile.me/5NFjK/5abA7L1Cf)
+   - [image.ub]
 3. **FPGA bit files** for sensors and communications
    - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
 4. **Driver files**
