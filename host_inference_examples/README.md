@@ -9,51 +9,50 @@ Since the host processes the inference results from an unprocessed AI model, in 
 
 ## Required Files
 Running inference requires boot files, drivers, API packages, and other resources.
-However, the exact files may vary depending on the example.  
-Please refer to the download links provided in each [Example](#example) section below.
+**Note:** The required files may differ depending on the example. Download links are provided in each **Example** section.
 
 The following files are required to run inference in host-driven mode:
-
-1. **Bootloader file** for BS402 booting
-   - [spl](https://gofile.me/5NFjK/MPDyBUKCk)
-   - [u-boot](https://gofile.me/5NFjK/HrNppqcEw)
-2. **Boot image file** for BS402
-   - [image.ub]
-3. **FPGA bit files** for sensors and communications
-   - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
-4. **Driver files**
+1. **Bootloader**
+   - Required to initialize and boot the Tachy-Shield.
+2. **System image**
+   - Required to opertate the Tachy-Shield.
+3. **FPGA bitstream**
+   - Required to configure the FPGA logic for the Tachy-Shield operation.
+4. **Drivers**
    - [tachy-rpi-drivers](https://github.com/Deeper-I/tachy-rpi-drivers)
-   Drivers required to use the Tachy-Shield device on Raspberry Pi, including the host interface driver and the dummy V4L2 sensor driver.
-
-5. **Tachy Runtime API**  
-   - [tachy_rt.whl](https://gofile.me/5NFjK/R6dNyQu5d) (Python API package provides the runtime library required to execute inference on Tachy-Shield)
-6. **Main executable** for running on the host
-   - **Note:** The executable differs by example. Download links are provided in each **Example** section.
-7. **tachyrt** 
-   - A compiled file generated from a trained model, required for execution on the Tachy-Shield NPU.
+   Required to use the Tachy-Shield device on Raspberry Pi, including the host interface driver and the dummy V4L2 sensor driver.
+5. **Tachy Runtime API**
+   - A python API package provides the runtime library required to execute inference on Tachy-Shield
+6. **Main executable**
+   - The host-side application used to control the device and run inference.
+7. **TachyRT model file (`.tachyrt`)** 
+   - A compiled model file generated from a trained model, required for execution on the Tachy-Shield NPU.
 
 ---
 
 ## Example
 | Example | Description | Notes |
 |---------|-------------|-------|
-| **Object Detection** | in Street view | - |
+| **Object Detection** | In street view | example1 |
 
 > ### Example 1: Object Detection - Street view (YOLOv4 Person/Car/NumberPlate)
 This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
 
 #### Example1 - requirements
-1. **Bootloader file** for BS402 booting
-   - [spl](https://gofile.me/5NFjK/MPDyBUKCk)
-   - [u-boot](https://gofile.me/5NFjK/HrNppqcEw)
-2. **Boot image file** for BS402
-   - [image](https://gofile.me/5NFjK/NhuNuKcFe)
-3. **FPGA bit files** for sensors and communications
-   - [FPGA bit](https://gofile.me/5NFjK/5abA7L1Cf)
-4. **Driver files**  see [Required Files](#required-files)
-5. **tachyrt file** Required TachyRT model for running the inference example
+1. **Bootloader**
+   - [spl](https://gofile.me/5NFjK/4iUNTeqqF)
+   - [u-boot](https://gofile.me/5NFjK/dRkyxLi1d)
+2. **System image**
+   - [image](https://gofile.me/5NFjK/CA5F0acpY)
+3. **FPGA bitstream**
+   - [FPGA bit](https://gofile.me/5NFjK/574JXkL1R)
+4. **Drivers**
+   - see [Required Files](#required-files)
+5. **Tachy Runtime API**
+   - [python wheel file](https://gofile.me/5NFjK/9a16ln5LV)
+6. **TachyRT model file (`.tachyrt`)** 
    - [tachyrt](https://gofile.me/5NFjK/8pjoLs9Ss)
-6. **Main executable**
+7. **Main executable**
    - Run the example application with:
    ```bash
    python3 main.py \
@@ -62,7 +61,7 @@ This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
       --post_config_path "./post_configs.json"
    ```
    - `--model_path` : path to the YOLOv4 compiled model (.tachyrt)
-   - `--path_firmware` : directory containing the TACHY-BS Shield firmware binaries
+   - `--path_firmware` : directory containing the Tachy-Shield firmware binaries
    - `--post_config_path` : path to the post-processing configuration JSON file
 
 #### Quick start
