@@ -6,11 +6,25 @@ import commentjson
 import string
 import argparse
 import numpy as np
-import importlib
 
 import post_process
-import tachy_rt.core.functions as rt_core
 
+from importlib.metadata import version, PackageNotFoundError
+from packaging.version import Version
+
+REQUIRED = "3.2.2"
+
+try:
+    current = version("tachy-rt")
+except PackageNotFoundError:
+    raise RuntimeError("The tachy-rt package is not installed.")
+
+if Version(current) < Version(REQUIRED):
+    raise RuntimeError(
+        f"Tachy Runtime >= {REQUIRED} is required (current: {current})."
+    )
+
+import tachy_rt.core.functions as rt_core
 from threading import Thread
 
 def read_json(name):
@@ -96,30 +110,31 @@ def create_args():
 def boot(args):
     if 'spi' not in args.interface or not args.upload_firmware:
         return
+    os.system("pinctrl set 4 op dl; sleep 3; pinctrl set 4 op dh")
 
     ''' Upload firmware to device '''
 
     data = {
         "spl" : {
-            "path" : f"./{args.path_firmware}/spl.bin",
+            "path" : os.path.join(args.path_firmware, "spl.bin"),
             "addr" : "0x0"
         },
         "uboot" : {
-            "path" : f"./{args.path_firmware}/u-boot.bin",
+            "path" : os.path.join(args.path_firmware, "u-boot.bin"),
             "addr" : "0x2000_0000"
         },
         "kernel" : {
-            "path" : f"./{args.path_firmware}/image.ub",
+            "path" : os.path.join(args.path_firmware, "image.ub"),
             "addr" : "0x4000_0000"
         },
         "fpga" : {
-            "path" : f"./{args.path_firmware}/fpga_top.bin",
+            "path" : os.path.join(args.path_firmware, "fpga_top.bin"),
             "addr" : "0x3000_0000"
         }}
     spi_type = args.interface.split(":")[-1]
     ret = rt_core.boot(spi_type, rt_core.DEV_TACHY_SHIELD, data)
     if ret:
-        print("Success to boot. Check the status via uart or other api")
+        print("Success to boot.")
     else:
         print("Failed to boot")
         print("Error code :", rt_core.get_last_error_code())
