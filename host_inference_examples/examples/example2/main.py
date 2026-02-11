@@ -47,9 +47,9 @@ def create_args():
         Get the parser.
         :return: parser
         """
-    
+
         parser = argparse.ArgumentParser(description='Deep learning example script')
-    
+
         parser.add_argument('--model_path', type=str,
                             help='Model to inference',
                             required=True)
@@ -91,7 +91,7 @@ def create_args():
         args.interface = "spi:host"
 
         return args
-    
+
     args = get_parser()
 
     args.inverse_sync    = True if args.inverse_sync.lower() == 'true' else False
@@ -220,7 +220,7 @@ if __name__ == '__main__':
     args = create_args()
 
     ''' Boot tachy-bs '''
-    # boot(args)
+    boot(args)
 
     ''' Init sensor interface'''
     init_sensor(args)

@@ -31,9 +31,10 @@ The following files are required to run inference in host-driven mode:
 ---
 
 ## Example
-| Example | Description | Notes |
-|---------|-------------|-------|
-| **Object Detection** | In street view | example1 |
+| Example              | Description                 | Notes    |
+| -------------------- | --------------------------- | -------- |
+| **Object Detection** | In street view              | example1 |
+| **Object Detection** | Custom BSNet (YOLOv9-based) | example2 |
 
 > ### Example 1: Object Detection - Street view (YOLOv4 Person/Car/NumberPlate)
 This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
@@ -82,3 +83,35 @@ This example demonstrates **YOLOv4** running on the Tachy-Shield Edge AI Board.
 
 4. **Run the example application**  
    `python3 main.py --model_path "./model_160x288x3_inv-f.tachyrt" --path_firmware "./tachy-shield" --post_config_path "./post_configs.json"`
+
+---
+
+> ### Example 2: Object Detection - Face detection (YOLOv9-based custom BSNet)
+This example demonstrates a **custom BSNet model based on YOLOv9** running on the Tachy-Shield Edge AI Board.
+Use this example when you want to run host-driven inference with a custom object detection model and post-processing pipeline.
+
+#### Example2 - requirements
+1. **Bootloader**
+   - [spl](https://gofile.me/5NFjK/4iUNTeqqF)
+   - [u-boot](https://gofile.me/5NFjK/dRkyxLi1d)
+2. **System image**
+   - [image](https://gofile.me/5NFjK/CA5F0acpY)
+3. **FPGA bitstream**
+   - [FPGA bit](https://gofile.me/5NFjK/574JXkL1R)
+4. **Drivers**
+   - see [Required Files](#required-files)
+5. **Tachy Runtime API**
+   - [python wheel file](https://gofile.me/5NFjK/9a16ln5LV)
+6. **TachyRT model file (`.tachyrt`)** 
+   - [tachyrt](https://gofile.me/5NFjK/oJ9VDa94T)
+7. **Main executable**
+   - Run the example application with:
+   ```bash
+   python3 main.py \
+      --model_path "./model_256x416x3_inv-t.tachyrt" \
+      --path_firmware "./" \
+      --post_config_path "./post_configs.json"
+   ```
+   - `--model_path` : path to the YOLOv9 compiled model (.tachyrt)
+   - `--path_firmware` : directory containing the Tachy-Shield firmware binaries
+   - `--post_config_path` : path to the post-processing configuration JSON file
