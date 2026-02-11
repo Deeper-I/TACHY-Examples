@@ -1,0 +1,11 @@
+{
+    "SHAPES_INPUT": [256, 416, 3],
+    "SHAPES_OUTPUT": [[32,52,5],[16,26,5],[8,13,5]],
+    "SHAPES_DECODE":[1920,1080,3],
+    "PRE_THRESHOLD": 0.2,
+    "OBJ_THRESHOLD": 0.2,
+    "NMS_THRESHOLD": 0.2,
+    "N_MAX_OBJ": 30,
+    "N_CLASSES":1
+}
+
